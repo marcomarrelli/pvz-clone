@@ -1,0 +1,59 @@
+%%%%
+%% Analysis UML
+%% Put this Code on mermaid.live
+%% Diagram Type: Class
+%%%%
+
+classDiagram
+    %% Classes
+    class World {
+        <<interface>>
+ 
+        + getLevel() Level
+        + getGame() Game
+    }
+
+    class Level {
+        <<interface>>
+
+        + getZombieCount() Integer
+    }
+
+    class Game {
+        <<interface>>
+
+        %% createWave() --> Zombie Horde
+        %% createPlant() --> Position Plant Entity
+        + isOver() Boolean
+        + update() void
+        + createWave() void
+        + createPlant() void
+    }
+
+    class Entity {
+        <<interface>>
+
+        %% Using Float instead of Double for Optimization
+        + getX() Float
+        + getY() Float
+    }
+
+    class Zombie {
+        <<interface>>
+    }
+    
+    class Plant {
+        <<interface>>
+    }
+
+    class Sun {
+        <<interface>>
+    }
+
+    %% Connections
+    World <|-- Level
+    World <|-- Game
+    Game <|-- Entity
+    Entity <|-- Zombie
+    Entity <|-- Plant
+    Entity <|-- Sun
